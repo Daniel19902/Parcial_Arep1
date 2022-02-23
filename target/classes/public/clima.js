@@ -2,7 +2,7 @@ var clima = (function(){
 
     return {
 
-        api : function(){
+        api : function(pais){
             alert("entre")
             fetch('https://openweathermap.org/city/2643743')
                   .then(response => response.json())
