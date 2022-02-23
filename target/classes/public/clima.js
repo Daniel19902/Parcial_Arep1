@@ -4,7 +4,7 @@ var clima = (function(){
 
         api : function(pais){
 
-            fetch('http://localhost:5000/consulta?lugar='+pais)
+            fetch('https://secret-meadow-35581.herokuapp.com/consulta?lugar='+pais)
                   .then(response => response.json())
                   .then(json => $('#resultado').html(json))
 
