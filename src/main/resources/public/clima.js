@@ -4,7 +4,7 @@ var clima = (function(){
 
         api : function(pais){
             alert("entre")
-            fetch('https://openweathermap.org/city/2643743')
+            fetch('http://localhost:4567')
                   .then(response => response.json())
                   .then(json => console.log(json))
 
