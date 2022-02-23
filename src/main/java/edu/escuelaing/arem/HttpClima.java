@@ -54,15 +54,28 @@ public class HttpClima
             System.out.println("path: "+path);
             String url = "src/main/resources/public/";
             String s = "";
-            BufferedReader leer = new BufferedReader(new FileReader(url + path));
-            outputLine = "HTTP/1.1 200 OK\r\n"
-                    + "Conten-Type: text/html\r\n"
-                    + "\r\n";
-            while ((s = leer.readLine()) != null) {
-                outputLine += s;
-                outputLine += "\n";
+            if(path.equals("/clima.html") || path.equals("/clima.js")) {
+                System.out.println("entre clima");
+                BufferedReader leer = new BufferedReader(new FileReader(url + path));
+                outputLine = "HTTP/1.1 200 OK\r\n"
+                        + "Conten-Type: text/html\r\n"
+                        + "\r\n";
+                while ((s = leer.readLine()) != null) {
+                    outputLine += s;
+                    outputLine += "\n";
+                }
+                out.println(outputLine);
+            }else if(path.contains("/consulta?lugar=")){
+                outputLine = "HTTP/1.1 200 OK\r\n"
+                        + "Conten-Type: text/html\r\n"
+                        + "\r\n";
+                String[] path2;
+                path2 = path.split("=");
+                Clima clima = new Clima();
+                outputLine+=clima.clima(path2[1]);
+                out.println(outputLine);
             }
-            out.println(outputLine);
+
             out.close();
             in.close();
             clienteSocket.close();

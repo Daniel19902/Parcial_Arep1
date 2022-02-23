@@ -3,10 +3,10 @@ var clima = (function(){
     return {
 
         api : function(pais){
-            alert("entre")
-            fetch('http://localhost:4567/consulta')
+
+            fetch('https://secret-meadow-35581.herokuapp.com/consulta?lugar='+pais)
                   .then(response => response.json())
-                  .then(json => console.log(json))
+                  .then(json => $('#resultado').html(json))
 
         }
 
